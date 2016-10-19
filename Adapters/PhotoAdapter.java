@@ -64,9 +64,9 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.SimpleViewHo
         if(photo.getDate_taken().isEmpty())
             return;
 
-        Date publishedData = Utils.getUTCDateFromString(photo.getDate_taken());
-        String stringPublishedDate = Utils.getDateWithDefaultFormat(publishedData);
-        holder.dateTakenAt.setText(String.format("%s: %s", context.getResources().getString(R.string.taken_at), stringPublishedDate));
+        Date takenData = Utils.getUTCDateFromString(photo.getDate_taken());
+        String stringTakenDate = Utils.getDateWithDefaultFormat(takenData);
+        holder.dateTakenAt.setText(String.format("%s: %s", context.getResources().getString(R.string.taken_at), stringTakenDate));
     }
 
     private void displayTags(SimpleViewHolder holder, Photo photo) {
