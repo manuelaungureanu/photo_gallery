@@ -1,4 +1,4 @@
-package com.chefless.ela.photo_gallery.Utils;
+package com.chefless.ela.photo_gallery.Configuration;
 
 import android.content.Context;
 
