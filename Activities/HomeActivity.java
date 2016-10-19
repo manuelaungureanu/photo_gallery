@@ -24,7 +24,10 @@ import com.chefless.ela.photo_gallery.Interfaces.IRequestListener;
 import com.chefless.ela.photo_gallery.Model.Photo;
 import com.chefless.ela.photo_gallery.Network.RestfullRequestService;
 import com.chefless.ela.photo_gallery.Adapters.PhotoAdapter;
+import com.chefless.ela.photo_gallery.Presenters.GalleryPresenter;
 import com.chefless.ela.photo_gallery.R;
+import com.chefless.ela.photo_gallery.Views.GalleryView;
+
 import org.json.JSONObject;
 
 import java.lang.ref.WeakReference;
@@ -37,7 +40,7 @@ import java.util.HashMap;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements GalleryView {
 
     @BindView(R.id.photoRecyclerView) RecyclerView photoRecyclerView;
     @BindView(R.id.codeProgressBar) ProgressBar codeProgressBar;
@@ -46,6 +49,7 @@ public class HomeActivity extends AppCompatActivity {
     private PhotoAdapter photoAdapter;
     Photo[] model;
     Boolean dirToSortDesc = true;
+    GalleryPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,9 @@ public class HomeActivity extends AppCompatActivity {
 
         initUI();
         fetchDataAndUpdateUI();
+
+        //TODO: use presenter logic for fetching data
+        presenter = new GalleryPresenter(this, new RestfullRequestService(this));
     }
 
     private void initUI() {
